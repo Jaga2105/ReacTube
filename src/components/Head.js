@@ -49,11 +49,7 @@ const Head = () => {
     //     // Additional functionality when focus is withdrawn
     //   }
     // }
-
-
-    // checking code
-    
-
+  
 
     return () =>{
       clearTimeout(timer);
@@ -79,8 +75,6 @@ const handleInputPropagation = () =>{
       }
     );
     const json = await data.json();
-    // const searchQueryArray = json.data[1];
-    // console.log(json.data[1]);
     setSuggestions(json.data[1]);
     dispatch(cacheResults({ [suggestionQuery]: json.data[1] }));
   };

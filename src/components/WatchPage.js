@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { closeMenu } from "../store/reducers/appSlice";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { API_KEY } from "../helpers/constants";
 import formatViewCount from "../helpers/formatViewCount";
 import uploadTime from "../helpers/uploadTime";
@@ -11,22 +11,15 @@ import RelatedSuggestions from "./RelatedSuggestions";
 import { addDetails } from "../store/reducers/videoInfoSlice";
 
 const WatchPage = () => {
-  const [searchParams] = useSearchParams();
-  
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const movieId = searchParams.get("v");
 
-  const [movieId, setMovieId] = useState(searchParams.get("v"));
   const [videoInfo, setVideoInfo] = useState([]);
   const [comments,setComments] = useState([]);
-  // const[description,setDescription] = useState("");
-  // const descriptionArray = description.split(/[\n]+/);
-
-
-  const { id } = useSelector((state)=>state.info);
   const {isMenuOpen} = useSelector((state)=>state.app);
 
-  // useState(()=>{
-  //   setMovieId(searchParams.get("v"));
-  // },[id])
+  
 
 
 
@@ -34,19 +27,16 @@ const WatchPage = () => {
   const uploadedTime = uploadTime(videoInfo[0]?.snippet?.publishedAt);
   const likeCount = formatViewCount(videoInfo[0]?.statistics?.likeCount);
   const description = videoInfo[0]?.snippet?.description ?? "";
-  // const descriptionArray = description.split(/[\n]+/);
 
   const dispatch = useDispatch();
   
 
   useEffect(() => {
-    setMovieId(searchParams.get("v"));
-    // setDescription(videoInfo[0]?.snippet?.description);
     dispatch(closeMenu());
     dispatch(addDetails(movieId));
     movieDetailsById();
     fetchComments()
-  }, [movieId,id]);
+  }, [movieId]);
 
 
 
@@ -143,4 +133,3 @@ const WatchPage = () => {
 
 export default WatchPage;
 
-// justify-between rounded-2xl bg-gray-200 p-2 h-10 mt-2 cursor-pointer
