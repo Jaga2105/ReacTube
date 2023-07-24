@@ -15,8 +15,8 @@ const Head = () => {
   
 
   const clickOutSideRef=useRef(null);
-  const inputRef = useRef(null);
-     const suggestionDivRef = useRef(null);
+  // const inputRef = useRef(null);
+    //  const suggestionDivRef = useRef(null);
   
 
   const dispatch = useDispatch();
@@ -34,34 +34,26 @@ const Head = () => {
       }
     }, 200);
 
-    // checking code
-
-    // const handleClickOutside = (e)=>{
-    //   // if(showSuggestions && clickOutSideRef.current &&
-    //   //   !clickOutSideRef.current.contains(e.target) && inputRef.current!==e.target){
-    //   //     setShowSuggestions(false)
-    //   //   }
-    //   if (
-    //     suggestionDivRef.current &&
-    //     !suggestionDivRef.current.contains(e.relatedTarget)
-    //   ) {
-    //     setShowSuggestions(false);
-    //     // Additional functionality when focus is withdrawn
-    //   }
-    // }
+   window.addEventListener("mousedown", handleClickOutside);
   
 
     return () =>{
       clearTimeout(timer);
-      
+      window.removeEventListener("mousedown",handleClickOutside);
     } 
   }, [suggestionQuery]);
 
-// Handling input propagation
-const handleInputPropagation = () =>{
-  // e.stopPropagation();
-  setShowSuggestions(true);
-}
+  const handleClickOutside = (e) =>{
+    if(clickOutSideRef.current && !clickOutSideRef.current.contains(e.target)){
+      setShowSuggestions(false);
+    }
+  }
+
+// // Handling input propagation
+// const handleInputPropagation = () =>{
+//   // e.stopPropagation();
+//   setShowSuggestions(true);
+// }
 
 
   const getSuggestions = async () => {
@@ -102,9 +94,9 @@ const handleInputPropagation = () =>{
             type="text"
             placeholder="Search"
             value={suggestionQuery}
-            ref={inputRef}
+            // ref={inputRef}
             onChange={(e) => setSuggestinQuery(e.target.value)}
-            onFocus={() => handleInputPropagation}
+            onClick={()=>setShowSuggestions(true)}
             // onBlur={() => setShowSuggestions(false)}
           />
           {suggestionQuery !== "" && (
@@ -133,7 +125,7 @@ const handleInputPropagation = () =>{
         </div>
         {showSuggestions && (
           <div className="z-10 bg-white w-[500px] absolute my-16   rounded-lg shadow-md dark:bg-black dark:text-white  dark:shadow-slate-400"
-          ref={suggestionDivRef}
+          // ref={suggestionDivRef}
           >
             <ul>
               <Link to={"/results?q="+suggestionQuery}>
