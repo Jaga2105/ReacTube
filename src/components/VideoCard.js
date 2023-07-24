@@ -17,12 +17,14 @@ const VideoCard = ({ info }) => {
   const publishedAt = info?.snippet?.publishedAt;
   const timeSincePublished = uploadTime(publishedAt);
   return (
-    <div className="p-1 mx-1 my-2 shadow-sm w-[360px] h-[360px] dark:shadow-slate-700 dark:rounded-b-lg">
+    <div className="p-1 mx-1 my-2 shadow-sm w-[360px] h-[360px]  dark:shadow-slate-700 dark:rounded-b-lg">
+      <div className="bg-gray-100 rounded-xl w-[360px] h-[200px] dark:bg-gray-800">
       <img
         className="rounded-xl hover:rounded-none w-[360px]"
         src={info?.snippet?.thumbnails?.medium?.url}
         alt="thumbnail"
       />
+      </div>
       <div className="p-2">
       <h1 className="font-bold mt-2">{croppedTitle}</h1>
       <h3>{channelTitle}</h3>

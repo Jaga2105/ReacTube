@@ -89,7 +89,9 @@ const handleInputPropagation = () =>{
           src="https://icon-library.com/images/hamburger-menu-icon-png/hamburger-menu-icon-png-9.jpg"
           alt="menu"
         />
+        <Link to={"/"}>
         <img className="h-8 mt-4 w-32 rounded-sm" src={Logo} alt="logo" />
+        </Link>
       </div>
       <div className="px-10 flex"
           ref={clickOutSideRef}
