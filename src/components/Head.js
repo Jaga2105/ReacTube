@@ -49,11 +49,6 @@ const Head = () => {
     }
   }
 
-// // Handling input propagation
-// const handleInputPropagation = () =>{
-//   // e.stopPropagation();
-//   setShowSuggestions(true);
-// }
 
 
   const getSuggestions = async () => {
@@ -94,10 +89,8 @@ const Head = () => {
             type="text"
             placeholder="Search"
             value={suggestionQuery}
-            // ref={inputRef}
             onChange={(e) => setSuggestinQuery(e.target.value)}
             onClick={()=>setShowSuggestions(true)}
-            // onBlur={() => setShowSuggestions(false)}
           />
           {suggestionQuery !== "" && (
             <span
@@ -125,7 +118,6 @@ const Head = () => {
         </div>
         {showSuggestions && (
           <div className="z-10 bg-white w-[500px] absolute my-16   rounded-lg shadow-md dark:bg-black dark:text-white  dark:shadow-slate-400"
-          // ref={suggestionDivRef}
           >
             <ul>
               <Link to={"/results?q="+suggestionQuery}>

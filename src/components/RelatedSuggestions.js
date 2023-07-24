@@ -10,7 +10,6 @@ const RelatedSuggestions = () => {
   const [relatedSuggestions, setRelatedSuggestions] = useState([]);
   const dispatch = useDispatch();
 
-  // const [movieId, setMovieId] = useState("");
   const { id } = useSelector((state)=>state.info);
   useEffect(()=>{
     getRelatedSuggestions();
@@ -29,7 +28,6 @@ const RelatedSuggestions = () => {
   }
   return (
     <div>
-      {/* {console.log(relatedSuggestions)} */}
       {relatedSuggestions && relatedSuggestions.map((suggestion)=>(
         <Link to={"?v="+suggestion?.id.videoId}
           onClick={()=>dispatch(addDetails(suggestion?.id?.videoId))}>

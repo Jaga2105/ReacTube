@@ -8,12 +8,12 @@ const Comments = ({comment}) => {
     const commentedTime =uploadTime(comment?.snippet?.topLevelComment?.snippet?.publishedAt);
   return (
     <div className='flex my-4 cursor-pointer'>
-        <div>
-            <img className="rounded-full mr-4" src={userImg} alt="img" />
+        <div className='mr-4'>
+            <img className="rounded-full" src={userImg} alt="img" />
         </div>
         <div>
             <span className='font-bold'>@{userName}</span>
-            <span className='ml-2 text-sm'>{commentedTime}</span>
+            <span className='ml-4 text-sm'>{commentedTime}</span>
             <div>
                 <span>{commentText}</span>
             </div>

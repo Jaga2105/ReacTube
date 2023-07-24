@@ -1,12 +1,9 @@
-// import express from 'express'
 const express=require('express')
-// import fetch from 'node-fetch';
-// import cors from 'cors'
 const cors=require('cors')
 const fetch = require('cross-fetch')
 
 const app = express();
-const PORT = 3001; // or any other port you prefer
+const PORT = 3001; 
 app.use(cors())
 
 
@@ -40,7 +37,7 @@ app.get('/api/searchsuggestions', async (req, res) => {
 
 app.get('/api/searchresults', async (req, res) => {
   const {key,q} = req.query;
-  const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&type=video&key=${key}&q=${q}`;
+  const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=video&key=${key}&q=${q}`;
  try {
   const response = await fetch(url,{
     headers: {
@@ -111,7 +108,7 @@ app.get('/api/comments', async (req, res) => {
 // Related video suggestions
 app.get('/api/relatedsuggestions', async (req, res) => {
   const {key,id} = req.query;
-  const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&type=video&key=${key}&relatedToVideoId=${id}`;
+  const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=18&type=video&key=${key}&relatedToVideoId=${id}`;
  try {
   const response = await fetch(url,{
     headers: {
@@ -134,7 +131,7 @@ app.get('/api/relatedsuggestions', async (req, res) => {
 
 app.get('/api/fetchshorts', async (req, res) => {
   const {key} = req.query;
-  const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&videoDuration=short&key=${key}&q=trendingshorts`;
+  const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&type=video&videoDuration=short&key=${key}&q=trendingshorts`;
  try {
   const response = await fetch(url,{
     headers: {

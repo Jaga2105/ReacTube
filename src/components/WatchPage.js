@@ -19,16 +19,16 @@ const WatchPage = () => {
   const [comments,setComments] = useState([]);
   const {isMenuOpen} = useSelector((state)=>state.app);
 
-  
-
-
-
   const viewCount = formatViewCount(videoInfo[0]?.statistics?.viewCount);
   const uploadedTime = uploadTime(videoInfo[0]?.snippet?.publishedAt);
   const likeCount = formatViewCount(videoInfo[0]?.statistics?.likeCount);
   const description = videoInfo[0]?.snippet?.description ?? "";
 
   const dispatch = useDispatch();
+
+useEffect(()=>{
+  window.scrollTo(0,0);
+},[movieId])
   
 
   useEffect(() => {
