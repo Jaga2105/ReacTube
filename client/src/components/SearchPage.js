@@ -22,7 +22,8 @@ const SearchPage = () => {
 
   const getSearchResults = async () => {
     const response = await fetch(
-      `http://localhost:3001/api/searchresults?key=${API_KEY}&q=${searchQuery}`,
+      `https://reac-tube-server.vercel.app/api/searchresults?key=${API_KEY}&q=${searchQuery}`,
+      // `http://localhost:3001/api/searchresults?key=${API_KEY}&q=${searchQuery}`,
       {
         method: "GET",
         headers: {

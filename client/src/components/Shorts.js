@@ -10,7 +10,8 @@ const Shorts = () => {
     },[])
     const getShorts = async () => {
         const response = await fetch(
-          `http://localhost:3001/api/fetchshorts?key=${API_KEY}`,
+          `https://reac-tube-server.vercel.app/api/fetchshorts?key=${API_KEY}`,
+          // `http://localhost:3001/api/fetchshorts?key=${API_KEY}`,
           {
             method: "GET",
             headers: {

@@ -42,7 +42,8 @@ useEffect(()=>{
 
   const movieDetailsById = async () => {
     const response = await fetch(
-      `http://localhost:3001/api/moviedetailsbyid?key=${API_KEY}&id=${movieId}`,
+      `https://reac-tube-server.vercel.app/api/moviedetailsbyid?key=${API_KEY}&id=${movieId}`,
+      // `http://localhost:3001/api/moviedetailsbyid?key=${API_KEY}&id=${movieId}`,
       {
         method: "GET",
         headers: {
@@ -56,7 +57,7 @@ useEffect(()=>{
 
   const fetchComments = async () => {
     const response = await fetch(
-      `http://localhost:3001/api/comments?key=${API_KEY}&id=${movieId}`,
+      `https://reac-tube-server.vercel.app/api/comments?key=${API_KEY}&id=${movieId}`,
       {
         method: "GET",
         headers: {

@@ -53,7 +53,8 @@ const Head = () => {
 
   const getSuggestions = async () => {
     const data = await fetch(
-      `http://localhost:3001/api/searchsuggestions?q=${suggestionQuery}`,
+      `https://reac-tube-server.vercel.app/api/searchsuggestions?q=${suggestionQuery}`,
+      // `http://localhost:3001/api/searchsuggestions?q=${suggestionQuery}`,
       {
         method: "GET",
         headers: {

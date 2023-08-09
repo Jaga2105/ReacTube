@@ -16,7 +16,8 @@ const RelatedSuggestions = () => {
   },[id])
 
   const getRelatedSuggestions =async ()=>{
-    const response = await fetch(`http://localhost:3001/api/relatedsuggestions?&key=${API_KEY}&id=${id}`,{
+    const response = await fetch(`https://reac-tube-server.vercel.app/api/relatedsuggestions?&key=${API_KEY}&id=${id}`,{
+    // const response = await fetch(`http://localhost:3001/api/relatedsuggestions?&key=${API_KEY}&id=${id}`,{
       method:"GET",
       headers:{
         "Content-Type":"Application/json",
